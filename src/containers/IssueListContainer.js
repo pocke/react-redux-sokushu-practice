@@ -62,11 +62,11 @@ class IssueListContainer extends Component {
   }
 
   onChangeAssigneeFilter(user) {
-    // TODO: implement
+    this.search({assignee_id: user.id})
   }
 
   onChangeLabelFilter(label) {
-    // TODO: implement
+    this.search({label_ids: label.id})
   }
 
   render() {

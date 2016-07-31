@@ -24,11 +24,11 @@ class IssueListHeader extends Component {
   }
 
   onChangeAssigneeFilter(user) {
-    // TODO: implement
+    this.props.onChangeAssigneeFilter(user);
   }
 
   onChangeLabelFilter(label) {
-    // TODO: implement
+    this.props.onChangeLabelFilter(label);
   }
 
   onChangeAssigneeModal(show) {
