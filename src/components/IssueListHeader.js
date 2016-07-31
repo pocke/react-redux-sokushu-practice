@@ -59,11 +59,11 @@ class IssueListHeader extends Component {
           <Modal
             isOpen={showAssigneeModal}
           >
+            <div
+              styleName="modal-close-btn"
+              onClick={this.onChangeAssigneeModal.bind(this, false)}
+            >close</div>
             <ul>
-              <div
-                styleName="modal-close-btn"
-                onClick={this.onChangeAssigneeModal.bind(this, false)}
-              >close</div>
               {
                 issueManager.users.map((user) => {
                   return (
@@ -85,11 +85,11 @@ class IssueListHeader extends Component {
           <Modal
             isOpen={showLabelModal}
           >
+            <div
+              styleName="modal-close-btn"
+              onClick={this.onChangeLabelModal.bind(this, false)}
+            >close</div>
             <ul>
-              <div
-                styleName="modal-close-btn"
-                onClick={this.onChangeLabelModal.bind(this, false)}
-              >close</div>
               {
                 issueManager.labels.map((label) => {
                   return (

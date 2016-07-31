@@ -47,7 +47,7 @@ class IssueListContainer extends Component {
   }
 
   search(params = {}) {
-    let query = {}
+    const query = {}
     _.each(_.extend({}, this.searchParams(), params), (value, key) => {
       query[key] = value
     })
