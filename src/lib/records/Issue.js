@@ -19,6 +19,7 @@ const _Issue = Record({
   content: '',
   assignee: new User(),
   labels: new List(),
+  comment_count: 0,
 })
 
 export default class Issue extends _Issue {
@@ -45,6 +46,7 @@ export default class Issue extends _Issue {
       created: issue.created,
       updated: issue.updated,
       content: issue.content,
+      comment_count: issue.comment_count,
       comments,
       labels,
       assignee: issue.assignee ? User.fromJS(issue.assignee) : new User(),
