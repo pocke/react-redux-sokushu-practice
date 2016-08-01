@@ -83,7 +83,12 @@ async function putCommentRequest(issue, comment) {
 }
 
 async function deleteCommentRequest(issue, comment) {
-  // TODO: implement
+  const response = await $.ajax({
+    url: `${END_POINTS.ISSUES}/${issue.id}/comments/${comment.id}`,
+    method: 'DELETE',
+    timeout: 100000,
+  })
+  return Comment.fromJS(response)
 }
 
 function setIssueDetail(issueDetail) {
@@ -165,7 +170,16 @@ export function updateComment(issueDetail, comment) {
 
 export function deleteComment(issueDetail, comment) {
   return async(dispatch) => {
-    // TODO: implement
+    const prevComments = issueDetail.comments
+
+    try {
+      await deleteCommentRequest(issueDetail, comment)
+      const nextComments = prevComments.filter(c => c.id != comment.id)
+      dispatch(setComments(nextComments))
+    } catch (e) {
+      console.log("error", error)
+      dispatch(setComments(prevComments)) // fallback to previous state
+    }
   }
 }
 

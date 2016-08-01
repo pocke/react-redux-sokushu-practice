@@ -32,12 +32,12 @@ class IssueDetailContainer extends Component {
   }
 
   onClickCommentSave(comment) {
-    // TODO: implement update
-    this.props.addComment(this.props.issueDetail, comment)
+    this.props.updateComment(this.props.issueDetail, comment)
   }
 
   onClickCommentDelete(comment) {
-    // TODO: implement
+    console.log('hogehgoe');
+    this.props.deleteComment(this.props.issueDetail, comment)
   }
 
   onClickTitleEdit() {

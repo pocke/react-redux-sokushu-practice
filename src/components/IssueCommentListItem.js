@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import CSSModules from 'react-css-modules'
 
+import Comment from '../lib/records/Comment'
 import nl2br from '../lib/utils/nl2br'
 
 import styles from './IssueCommentListItem.scss'
@@ -15,19 +16,20 @@ class IssueCommentListItem extends Component {
   }
 
   onClickEdit() {
-    // TODO: implement
+    this.setState({ isEditing: true });
   }
 
   onClickCancel() {
-    // TODO: implement
+    this.setState({ isEditing: false });
   }
 
   onClickSave() {
-    // TODO: implement
+    const comment = this.props.comment.merge({content: this.state.editingContent})
+    this.props.onClickSave(comment)
   }
 
   onClickDelete() {
-    // TODO: implement
+    this.props.onClickDelete(this.props.comment)
   }
 
   onChangeContent(e) {
