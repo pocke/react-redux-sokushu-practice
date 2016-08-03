@@ -12,6 +12,8 @@ class IssueDetailHeader extends Component {
     super(props)
     this.state = {
       title: this.props.issue.title,
+      showSelectAssigneeModal: false,
+      showSelectLabelModal: false,
     }
   }
 
@@ -41,7 +43,7 @@ class IssueDetailHeader extends Component {
   }
 
   onChangeShowUsersModal(show) {
-    // TODO: implement
+    this.setState({showSelectAssigneeModal: show})
   }
 
   onChangeShowLabelsModal(show) {
@@ -103,6 +105,30 @@ class IssueDetailHeader extends Component {
               issue.assignee.id ? (issue.assignee.name) : ("No Assignee")
             }
           </div>
+          <Modal
+            isOpen={this.state.showSelectAssigneeModal}
+          >
+            <div
+              styleName="modal-close-btn"
+              onClick={this.onChangeShowUsersModal.bind(this, false)}
+            >close</div>
+            <ul>
+              {
+                issueManager.users.map((user) => {
+                  return (
+                    <li
+                      key={user.id}
+                      styleName="modal-item"
+                      onClick={this.onAssigneeSelected.bind(this, user)}
+                    >{user.name}
+                      { this.isSelectedUser(user) ? <i styleName="modal-item-check" className="fa fa-check-circle-o" /> : (null)}
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </Modal>
+
           <div styleName="items"
                onClick={this.onChangeShowLabelsModal.bind(this, true)}
           >
