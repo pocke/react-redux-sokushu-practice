@@ -63,7 +63,7 @@ class IssueDetailContainer extends Component {
   }
 
   onLabelsSelected(issue) {
-    // TODO: implement
+    this.props.updateIssue(issue)
   }
 
   onChangeShowUsersModal(show) {

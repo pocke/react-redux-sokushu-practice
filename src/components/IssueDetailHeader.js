@@ -40,7 +40,11 @@ class IssueDetailHeader extends Component {
   }
 
   onLabelSelected(label, e) {
-    // TODO: implement
+    const labels = this.props.issue.labels.some(l => l.id === label.id) ?
+      this.props.issue.labels.filter(l => l.id !== label.id) :
+      this.props.issue.labels.push(label)
+    const issue = this.props.issue.set('labels', labels)
+    this.props.onLabelsSelected(issue)
   }
 
   onChangeShowUsersModal(show) {
