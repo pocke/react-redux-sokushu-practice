@@ -12,6 +12,7 @@ const Actions = {
   SET_LOADING: 'issue_detail/set_loading',
   SET_SHOW_USERS_MODAL: 'issue_detail/set_show_users_modal',
   SET_SHOW_LABELS_MODAL: 'issue_detail/set_show_labels_modal',
+  SET_COMMENT_ERRORS: 'issue_detail/set_comment_error',
 }
 
 export default Actions
@@ -119,6 +120,13 @@ function setLoading(loading) {
   }
 }
 
+function setCommentErrors(errors) {
+  return {
+    type: Actions.SET_COMMENT_ERRORS,
+    errors,
+  }
+}
+
 export function findIssueDetail(issueId) {
   return async(dispatch) => {
     dispatch(setLoading(true))
@@ -142,6 +150,8 @@ export function addComment(issueDetail, comment) {
     } catch (error) {
       console.log("error", error)
       dispatch(setComments(prevComments)) // fallback to previous state
+      const errors = error.responseJSON.errors
+      dispatch(setCommentErrors(errors))
     }
   }
 }
