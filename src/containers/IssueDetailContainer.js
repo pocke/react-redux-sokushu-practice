@@ -102,6 +102,7 @@ class IssueDetailContainer extends Component {
             />
             <IssueCommentForm
               issue={issueDetail}
+              issueDetailManager={issueDetailManager}
               onClickComment={this.onClickCommentAdd.bind(this)}
               onClickChangeStatus={this.onClickChangeStatus.bind(this)}
             />

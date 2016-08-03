@@ -72,7 +72,6 @@ class IssueListContainer extends Component {
   render() {
     const { params, issues, issueManager, issueListManager } = this.props
     const { assignee_id: userFilterId, label_ids: labelFilterId } = params
-    console.log("issueManager", issueManager)
     return (
       <div className={styles.base}>
         <Loader loaded={!issueListManager.loading}>

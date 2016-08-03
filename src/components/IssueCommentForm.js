@@ -83,6 +83,15 @@ class IssueCommentForm extends Component {
             Comment
           </div>
         </div>
+        {
+          this.props.issueDetailManager.errors.map( (error) => {
+            return (
+              <div>
+                {error}
+              </div>
+            )
+          })
+        }
       </div>
     )
   }

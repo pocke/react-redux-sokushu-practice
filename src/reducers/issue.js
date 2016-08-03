@@ -56,7 +56,6 @@ function issueListManager(state = new IssueListManager(), action) {
 }
 
 function issueDetailManager(state = new IssueDetailManager(), action) {
-  console.log('state', state);
   switch (action.type) {
     case IssueDetailActions.SET_TITLE_EDITING:
       return state.set('isTitleEditing', action.editing)
@@ -67,7 +66,6 @@ function issueDetailManager(state = new IssueDetailManager(), action) {
     case IssueDetailActions.SET_SHOW_LABELS_MODAL:
       return state.set('showLabelsModal', action.show)
     case IssueDetailActions.SET_COMMENT_ERRORS:
-      console.log('action.errors', action.errors);
       return state.set('errors', action.errors)
     default:
       break // do nothing
