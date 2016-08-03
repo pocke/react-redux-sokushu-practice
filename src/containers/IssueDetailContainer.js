@@ -35,6 +35,10 @@ class IssueDetailContainer extends Component {
     this.props.updateComment(this.props.issueDetail, comment)
   }
 
+  onClickCommentAdd(comment) {
+    this.props.addComment(this.props.issueDetail, comment)
+  }
+
   onClickCommentDelete(comment) {
     console.log('hogehgoe');
     this.props.deleteComment(this.props.issueDetail, comment)
@@ -98,7 +102,7 @@ class IssueDetailContainer extends Component {
             />
             <IssueCommentForm
               issue={issueDetail}
-              onClickComment={this.onClickCommentSave.bind(this)}
+              onClickComment={this.onClickCommentAdd.bind(this)}
               onClickChangeStatus={this.onClickChangeStatus.bind(this)}
             />
           </div>
