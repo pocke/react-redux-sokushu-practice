@@ -47,7 +47,7 @@ class IssueDetailHeader extends Component {
   }
 
   onChangeShowLabelsModal(show) {
-    // TODO: implement
+    this.setState({showSelectLabelModal: show})
   }
 
   render() {
@@ -134,6 +134,29 @@ class IssueDetailHeader extends Component {
           >
             {issue.labels.size > 0 ? issue.labels.map((label) => (<span>{label.name}</span>)) : ("No Labels")}
           </div>
+          <Modal
+            isOpen={this.state.showSelectLabelModal}
+          >
+            <div
+              styleName="modal-close-btn"
+              onClick={this.onChangeShowLabelsModal.bind(this, false)}
+            >close</div>
+            <ul>
+              {
+                issueManager.labels.map((label) => {
+                  return (
+                    <li
+                      key={label.id}
+                      styleName="modal-item"
+                      onClick={this.onLabelSelected.bind(this, label)}
+                    >{label.name}
+                      { this.isSelectedLabel(label) ? <i styleName="modal-item-check" className="fa fa-check-circle-o" /> : (null)}
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </Modal>
         </div>
         <div styleName="assign-label-wrapper">
           <div styleName="item-labels">
