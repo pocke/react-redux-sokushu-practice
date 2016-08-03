@@ -35,7 +35,8 @@ class IssueDetailHeader extends Component {
   }
 
   onAssigneeSelected(user, e) {
-    // TODO: implement
+    const issue = this.props.issue.set('assignee', user)
+    this.props.onAssigneeSelected(issue)
   }
 
   onLabelSelected(label, e) {

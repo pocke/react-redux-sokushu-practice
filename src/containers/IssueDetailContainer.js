@@ -59,7 +59,7 @@ class IssueDetailContainer extends Component {
   }
 
   onAssigneeSelected(issue) {
-    // TODO: implement
+    this.props.updateIssue(issue)
   }
 
   onLabelsSelected(issue) {
