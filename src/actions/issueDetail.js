@@ -120,7 +120,7 @@ function setLoading(loading) {
   }
 }
 
-function setCommentErrors(errors) {
+function setCommentErrorsAction(errors) {
   return {
     type: Actions.SET_COMMENT_ERRORS,
     errors,
@@ -151,7 +151,7 @@ export function addComment(issueDetail, comment) {
       console.log("error", error)
       dispatch(setComments(prevComments)) // fallback to previous state
       const errors = error.responseJSON.errors
-      dispatch(setCommentErrors(errors))
+      dispatch(setCommentErrorsAction(errors))
     }
   }
 }
@@ -216,4 +216,10 @@ export function setShowUsersModal(show) {
 
 export function setShowLabelsModal(show) {
   // TODO: implement
+}
+
+export function setCommentErrors(errors) {
+  return async(dispatch) => {
+    dispatch(setCommentErrorsAction(errors));
+  }
 }

@@ -18,6 +18,7 @@ import {
   updateIssue,
   setShowUsersModal,
   setShowLabelsModal,
+  setCommentErrors,
 } from '../actions/issueDetail'
 
 import styles from './IssueDetailContainer.scss'
@@ -73,6 +74,11 @@ class IssueDetailContainer extends Component {
     // TODO: implement
   }
 
+  setCommentErrors(errors) {
+    console.log('errors in container',errors);
+    this.props.setCommentErrors(errors);
+  }
+
   render() {
     const { issueDetail, issueDetailManager, issueManager } = this.props
     return (
@@ -105,6 +111,7 @@ class IssueDetailContainer extends Component {
               issueDetailManager={issueDetailManager}
               onClickComment={this.onClickCommentAdd.bind(this)}
               onClickChangeStatus={this.onClickChangeStatus.bind(this)}
+              setCommentErrors={this.setCommentErrors.bind(this)}
             />
           </div>
         </Loader>
@@ -135,6 +142,7 @@ const mapDispatchToProps = (dispatch) => {
     updateIssue,
     setShowUsersModal,
     setShowLabelsModal,
+    setCommentErrors,
   }, dispatch)
 }
 

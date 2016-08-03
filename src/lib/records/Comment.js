@@ -24,6 +24,6 @@ export default class Comment extends _Comment {
   }
 
   isValidContent() {
-    return this.userName.length > 0;
+    return this.content.length > 0;
   }
 }

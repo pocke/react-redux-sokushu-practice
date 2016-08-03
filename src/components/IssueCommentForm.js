@@ -27,11 +27,23 @@ class IssueCommentForm extends Component {
   }
 
   onChangeUserName(e) {
-    this.setState({userName: e.target.value})
+    this.setState({userName: e.target.value}, this.checkError)
   }
 
   onChangeContent(e) {
-    this.setState({content: e.target.value})
+    this.setState({content: e.target.value}, this.checkError)
+  }
+
+  checkError() {
+    const comment = Comment.fromJS(this.state)
+    const errors = []
+    if (!comment.isValidUserName()) {
+      errors.push('ユーザー名を入力して下さい')
+    }
+    if (!comment.isValidContent()) {
+      errors.push('内容を入力して下さい')
+    }
+    this.props.setCommentErrors(errors)
   }
 
   render() {
